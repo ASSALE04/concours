@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Inscription Concours ESATIC</title>
+</head>
+<body>
+    <h2>Formulaire d'inscription</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">S'inscrire</button>
+    </form>
+
+    <script>
+        const bouton = document.querySelector('input[type="submit"]');
+        bouton.addEventListener('click', function () {
+            bouton.value = 'Envoi en cours...';
+            setTimeout(() => {
+                bouton.value = 'Envoyer';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
